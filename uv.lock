@@ -594,6 +594,7 @@ version = "1.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "dateparser" },
+    { name = "joblib" },
     { name = "spacy" },
 ]
 
@@ -609,6 +610,7 @@ notebook = [
 requires-dist = [
     { name = "dateparser", specifier = ">=1.4.3" },
     { name = "ipykernel", marker = "extra == 'notebook'", specifier = ">=7.3.0" },
+    { name = "joblib", specifier = ">=1.6.0" },
     { name = "pandas", marker = "extra == 'notebook'", specifier = ">=3.0.6" },
     { name = "pytest", marker = "extra == 'notebook'", specifier = ">=9.1.1" },
     { name = "scikit-learn", marker = "extra == 'notebook'", specifier = ">=1.9.1" },

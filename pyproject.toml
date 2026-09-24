@@ -16,6 +16,7 @@ classifiers = [
 
 dependencies = [
     "dateparser>=1.4.3",
+    "joblib>=1.6.0",
     "spacy>=3.8.16",
 ]
 
