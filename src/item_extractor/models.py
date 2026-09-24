@@ -47,6 +47,6 @@ class Event(BaseItem):
 
 
 ExtractedItem = Annotated[
-    Todo|Task|Reminder|Event,
+    Todo|Task|Reminder|Event|None,
     Field(discriminator="type"),
 ]

@@ -47,7 +47,15 @@ class Extractor:
         self.matcher.add("REMINDER", [reminder_pattern])
         self.matcher.add("EVENT", [event_pattern])
 
-    def parse_command(self, text):
+    def parse_command(self, text: str):
+        """Extracts item title, datetime, and location from given text for item creation.
+
+        Args:
+            text (str): user input
+
+        Returns:
+            dict: dictionary of title, datetime, and location
+        """
         doc = self.nlp(text)
         matches = self.matcher(doc)
 
@@ -98,33 +106,37 @@ class Extractor:
         data = {"title": extracted_phrase, "datetime": date_time, "location": location}
         return data
 
-    def extract(self, text: str) -> list[ExtractedItem]:
-        """
-        Extract todos, tasks, reminders, and events from natural language.
+    def extract(self, text: str) -> ExtractedItem:
+        """Extract todo, task, reminder, and event from natural language.
+
+        Args:
+            text (str): user input
+
+        Returns:
+            ExtractedItem: Object of Todo | Task | Reminder | Event | None
         """
         # Predict the category without any hardcoded rules
         prediction = self.classifier.predict([text])[0]
 
-        item = []
+        item = None
 
         data = self.parse_command(text)
 
         print(data)
         if prediction == "todo":
-            item.append(Todo(title=data["title"]))
+            item = Todo(title=data["title"])
         elif prediction == "reminder":
-            item.append(Reminder(title=data["title"]))
+            item = Reminder(title=data["title"])
         elif prediction == "event":
-            item.append(
-                Event(
+            item = Event(
                     title=data["title"],
                     start_at=data["datetime"], # type: ignore
                     end_at=data["datetime"] + timedelta(hours=1), # type: ignore
                     location=data["location"]
                 )
-            )
+
         elif prediction == "task":
-            item.append(Task(title=data["title"], due_at=data["datetime"])) # type: ignore
+            item = Task(title=data["title"], due_at=data["datetime"]) # type: ignore
 
         print(item, prediction)
 

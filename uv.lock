@@ -590,26 +590,31 @@ wheels = [
 
 [[package]]
 name = "item-extractor"
-version = "0.1.0"
+version = "1.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "dateparser" },
+    { name = "spacy" },
+]
+
+[package.optional-dependencies]
+notebook = [
     { name = "ipykernel" },
     { name = "pandas" },
     { name = "pytest" },
     { name = "scikit-learn" },
-    { name = "spacy" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "dateparser", specifier = ">=1.4.3" },
-    { name = "ipykernel", specifier = ">=7.3.0" },
-    { name = "pandas", specifier = ">=3.0.6" },
-    { name = "pytest", specifier = ">=9.1.1" },
-    { name = "scikit-learn", specifier = ">=1.9.1" },
+    { name = "ipykernel", marker = "extra == 'notebook'", specifier = ">=7.3.0" },
+    { name = "pandas", marker = "extra == 'notebook'", specifier = ">=3.0.6" },
+    { name = "pytest", marker = "extra == 'notebook'", specifier = ">=9.1.1" },
+    { name = "scikit-learn", marker = "extra == 'notebook'", specifier = ">=1.9.1" },
     { name = "spacy", specifier = ">=3.8.16" },
 ]
+provides-extras = ["notebook"]
 
 [[package]]
 name = "jedi"

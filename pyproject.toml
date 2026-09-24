@@ -1,19 +1,49 @@
 [project]
 name = "item-extractor"
-version = "0.1.0"
+version = "1.0.0"
 description = "Extract todos, tasks, reminders, and events from natural language"
 readme = "README.md"
 authors = [
     { name = "UnknwnDev", email = "0unknwn.dev@gmail.com" }
 ]
 requires-python = ">=3.12"
+license = { text = "MIT" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
 dependencies = [
     "dateparser>=1.4.3",
+    "spacy>=3.8.16",
+]
+
+[tool.uv.sources]
+en_core_web_md = { url = "https://github.com" }
+
+[project.optional-dependencies]
+notebook = [
     "ipykernel>=7.3.0",
     "pandas>=3.0.6",
-    "pytest>=9.1.1",
     "scikit-learn>=1.9.1",
-    "spacy>=3.8.16",
+    "pytest>=9.1.1",
+]
+
+[tool.hatch.build.targets.wheel]
+# Exclude notebooks from the final .whl package
+exclude = [
+    "*.ipynb",
+    "notebooks/",
+    "tests/",
+]
+
+[tool.hatch.build.targets.sdist]
+# Exclude notebooks from the source distribution archive (.tar.gz)
+exclude = [
+    "*.ipynb",
+    "notebooks/",
+    "tests/",
 ]
 
 [build-system]
