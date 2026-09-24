@@ -11,3 +11,4 @@ wheels/
 .vscode
 data/
 .pytest_cache/
+.tests/
