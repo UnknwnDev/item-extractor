@@ -1,7 +1,7 @@
 # Item Extractor
 
-<!-- [![PyPI version](https://shields.io)](https://pypi.org)
-[![Python versions](https://shields.io)](https://pypi.org) -->
+[![PyPI version](https://img.shields.io/pypi/v/item-extractor.svg)](https://pypi.org/project/item-extractor)
+[![Python versions](https://img.shields.io/pypi/pyversions/item-extractor.svg)](https://pypi.org/project/item-extractor)
 
 lightweight feature extraction that turns natural-language into structured JSON of type tasks, events, todos, etc...
 
@@ -27,7 +27,7 @@ pip install "item_extractor[notebook]"
 
 ---
 
-## 🚀 Quick Start (Core Library)
+## How to use
 
 Use the built-in components to run an agent directly in your Python application:
 
@@ -40,7 +40,7 @@ print(response) # Returns Todo(title='Organize the garage', description='', type
 
 ---
 
-## 🧠 Creating Custom Intent Classification Agent Model
+## Creating Custom Intent Classification Agent Model
 
 If you installed the package with the `[notebook]` extras, you can create and fine-tune your own agent architectures. 
 
@@ -52,8 +52,7 @@ If you installed the package with the `[notebook]` extras, you can create and fi
 2. Open `notebooks/create_custom_agent.ipynb` and follow the step-by-step guide to train your agent using spaCy embeddings, customize decision thresholds, and evaluate agent trajectories.
 
 
-
-## 🛠️ Contribution & Local Setup
+## Contribution & Local Setup
 
 For developers looking to contribute to the codebase:
 
